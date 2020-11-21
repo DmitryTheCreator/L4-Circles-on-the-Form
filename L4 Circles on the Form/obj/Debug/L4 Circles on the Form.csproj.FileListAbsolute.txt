@@ -1,0 +1,9 @@
+C:\Users\ПК\OneDrive\Документы\ООП\L4 Circles on the Form\L4 Circles on the Form\bin\Debug\L4 Circles on the Form.exe.config
+C:\Users\ПК\OneDrive\Документы\ООП\L4 Circles on the Form\L4 Circles on the Form\bin\Debug\L4 Circles on the Form.exe
+C:\Users\ПК\OneDrive\Документы\ООП\L4 Circles on the Form\L4 Circles on the Form\bin\Debug\L4 Circles on the Form.pdb
+C:\Users\ПК\OneDrive\Документы\ООП\L4 Circles on the Form\L4 Circles on the Form\obj\Debug\L4 Circles on the Form.csprojAssemblyReference.cache
+C:\Users\ПК\OneDrive\Документы\ООП\L4 Circles on the Form\L4 Circles on the Form\obj\Debug\L4_Circles_on_the_Form.Form1.resources
+C:\Users\ПК\OneDrive\Документы\ООП\L4 Circles on the Form\L4 Circles on the Form\obj\Debug\L4_Circles_on_the_Form.Properties.Resources.resources
+C:\Users\ПК\OneDrive\Документы\ООП\L4 Circles on the Form\L4 Circles on the Form\obj\Debug\L4 Circles on the Form.csproj.GenerateResource.cache
+C:\Users\ПК\OneDrive\Документы\ООП\L4 Circles on the Form\L4 Circles on the Form\obj\Debug\L4 Circles on the Form.exe
+C:\Users\ПК\OneDrive\Документы\ООП\L4 Circles on the Form\L4 Circles on the Form\obj\Debug\L4 Circles on the Form.pdb
