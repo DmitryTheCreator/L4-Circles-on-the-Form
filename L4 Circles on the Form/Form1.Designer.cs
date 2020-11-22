@@ -28,50 +28,52 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.panel2 = new System.Windows.Forms.Panel();
+            this.panelR = new System.Windows.Forms.Panel();
+            this.panelB = new System.Windows.Forms.Panel();
             this.SuspendLayout();
             // 
-            // panel1
+            // panelR
             // 
-            this.panel1.BackColor = System.Drawing.Color.Coral;
-            this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel1.Dock = System.Windows.Forms.DockStyle.Right;
-            this.panel1.Location = new System.Drawing.Point(686, 0);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(236, 548);
-            this.panel1.TabIndex = 0;
+            this.panelR.BackColor = System.Drawing.Color.Coral;
+            this.panelR.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panelR.Dock = System.Windows.Forms.DockStyle.Right;
+            this.panelR.Location = new System.Drawing.Point(686, 0);
+            this.panelR.Name = "panelR";
+            this.panelR.Size = new System.Drawing.Size(236, 548);
+            this.panelR.TabIndex = 0;
             // 
-            // panel2
+            // panelB
             // 
-            this.panel2.BackColor = System.Drawing.Color.Salmon;
-            this.panel2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel2.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel2.Location = new System.Drawing.Point(0, 448);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(686, 100);
-            this.panel2.TabIndex = 1;
+            this.panelB.BackColor = System.Drawing.Color.Salmon;
+            this.panelB.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panelB.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.panelB.Location = new System.Drawing.Point(0, 448);
+            this.panelB.Name = "panelB";
+            this.panelB.Size = new System.Drawing.Size(686, 100);
+            this.panelB.TabIndex = 1;
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(922, 548);
-            this.Controls.Add(this.panel2);
-            this.Controls.Add(this.panel1);
+            this.Controls.Add(this.panelB);
+            this.Controls.Add(this.panelR);
             this.MaximumSize = new System.Drawing.Size(944, 604);
             this.MinimumSize = new System.Drawing.Size(944, 604);
             this.Name = "Form1";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "L4 Circles on the Form";
+            this.Paint += new System.Windows.Forms.PaintEventHandler(this.Form1_Paint);
+            this.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Form1_MouseDown);
             this.ResumeLayout(false);
 
         }
 
         #endregion
 
-        private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.Panel panel2;
+        private System.Windows.Forms.Panel panelR;
+        private System.Windows.Forms.Panel panelB;
     }
 }
 
