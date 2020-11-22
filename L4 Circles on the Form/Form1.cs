@@ -1,12 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Drawing.Drawing2D;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace L4_Circles_on_the_Form
@@ -20,6 +14,11 @@ namespace L4_Circles_on_the_Form
             InitializeComponent();
             figure = new Figure();
         }
+        // Обработчик нажатия кнопкой мыши на форму.
+        // Присваивает координаты курсора объекту класса круга.
+        // Если нажата ЛКМ, создется новый объект, либо объект, на который
+        // нажали меняет свой цвет.
+        // Если нажата ПКМ, удаляются выделенные объекты, либо текущий
         private void Form1_MouseDown(object sender, MouseEventArgs e)
         {      
             circle = new Circle();
@@ -37,24 +36,43 @@ namespace L4_Circles_on_the_Form
                     }
                 case MouseButtons.Right:
                     {
-                        var colors = (Color.HotPink, Color.Orange, Color.Blue);                    
+                        var colors = (Color.DeepPink, Color.Orange, Color.Blue);                    
                         figure.del_circle(colors);
                         break;
                     }
             }
             Invalidate();
         }
+        // Функция, которая рисует объекты из хранилища
         void draw(Circle circle)
         {
             CreateGraphics().DrawEllipse(new Pen(circle.Color, 2), circle.X - circle.Radius,
                         circle.Y - circle.Radius, 2 * circle.Radius, 2 * circle.Radius);
         }
+
+        // Обработчик события перерисовки элементов формы
         private void Form1_Paint(object sender, PaintEventArgs e)
         {
             for (int i = 0; i < figure.get_count(); ++i)
                 draw(figure.get_circle(i));
         }
-
+        // Обработчик события нажатия на кнопку очистки экрана
+        private void btnClear_Click(object sender, EventArgs e)
+        {
+            Graphics g = CreateGraphics();
+            g.Clear(BackColor);
+        }
+        // Обработчик события отображения объектов из хранилища
+        private void btnShow_Click(object sender, EventArgs e)
+        {
+            Invalidate();
+        }
+        // Класс-хранилище кругов. Имеет следующий методы:
+        // добавление круга, удаление круга, получение круга,
+        // получение количества кругов, проверка на нахождение
+        // точки внутри круга, измение цвета круга, если точка
+        // находится внутри него, изменение цвета круга при 
+        // добавлении и удалении объекта.
         public class Figure
         {
             private LinkedList<Circle> circles = new LinkedList<Circle>();
@@ -118,7 +136,7 @@ namespace L4_Circles_on_the_Form
                     int sum = Convert.ToInt32(Math.Pow(x - circle.X, 2) + Math.Pow(y - circle.Y, 2));
                     int rad = Convert.ToInt32(Math.Pow(circle.Radius, 2));
                     if (sum <= rad)
-                        return true;       
+                        return true;
                 }
                 return false;
             }
@@ -133,35 +151,35 @@ namespace L4_Circles_on_the_Form
                     {
                         if (circle.Color == Color.Blue)
                             circle.Color = Color.Orange;
-                        else circle.Color = Color.HotPink;
+                        else if (circle.Color != Color.Orange) 
+                            circle.Color = Color.DeepPink;
                     }
                 }
             }
 
-            public int check_color()
+            private void transite_addition()
             {
                 foreach(Circle circle in circles)
                 {
-                    if (circle.Color == Color.HotPink) return 0;
-                    if (circle.Color == Color.Orange) return 1;
+                    if (circle.Color == Color.Blue)
+                        circle.Color = Color.Red;
+                    if (circle.Color == Color.Orange)
+                        circle.Color = Color.DeepPink;
                 }
-                return -1;
-            }
-
-            private void transite_addition()
-            {
-                if (circles.Last.Value.Color == Color.Blue)
-                    circles.Last.Value.Color = Color.Red;
-                else if (circles.Last.Value.Color == Color.Orange) 
-                    circles.Last.Value.Color = Color.HotPink;
             }
             private void transite_deleting()
             {
                 int rand = new Random().Next(0, circles.Count);
                 int count = 0;
+                bool is_found = false;
                 foreach (Circle c in circles)
                 {
-                    if (rand == count && c.Color != Color.Blue)
+                    if (c.Color == Color.Blue)
+                        is_found = true;
+                }
+                foreach (Circle c in circles)
+                {
+                    if (rand == count && is_found == false)
                         c.Color = Color.Blue;
                     count++;
                 }
@@ -181,13 +199,6 @@ namespace L4_Circles_on_the_Form
             public Color Color { set { color = value; } get { return color; } }
 
             public Circle() { color = Color.Blue; }
-
-            public Circle(int x, int y, Color color)
-            {
-                this.x = x;
-                this.y = y;
-                this.color = color;
-            }
-        }
+        }   
     }
 }
